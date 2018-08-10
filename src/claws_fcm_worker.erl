@@ -102,6 +102,10 @@ disconnected(Type, connect, #data{gcs_add  = Host, gcs_port = Port} = Data)
   end;
 
 disconnected(cast, disconnect, _Data) ->
+  {keep_state_and_data, []};
+
+disconnected( Type,  Message, _Data) ->
+  error_logger:error_msg("Unmanaged message :~p   ~p",[Type, Message]),
   {keep_state_and_data, []}.
 
 retrying(cast, connect, Data) ->
