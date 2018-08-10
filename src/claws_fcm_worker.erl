@@ -105,7 +105,7 @@ disconnected(cast, disconnect, _Data) ->
   {keep_state_and_data, []};
 
 disconnected( Type,  Message, _Data) ->
-  error_logger:error_msg("Unmanaged message :~p   ~p",[Type, Message]),
+  error_logger:error_msg("claws_fcm : Unmanaged message in state disconnected :~p   ~p",[Type, Message]),
   {keep_state_and_data, []}.
 
 retrying(cast, connect, Data) ->
