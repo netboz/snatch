@@ -103,7 +103,11 @@ disconnected(Type, connect, #data{host = Host, port = Port} = Data)
             error_logger:error_msg("Connecting Error [~p:~p]: ~p~n",
                                    [Host, Port, Error]),
             {next_state, retrying, Data, [{next_event, cast, connect}]}
-    end.
+    end;
+
+disconnected(Type, Msg, _Data) ->
+  error_logger:error_msg("Clae fcm worker received unmanaged message  in state disconnected :~p ~p",[Type, Msg]),
+  {keep_state_and_data, []}.
 
 
 retrying(cast, connect, Data) ->
