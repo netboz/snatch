@@ -105,7 +105,7 @@ disconnected(cast, disconnect, _Data) ->
   {keep_state_and_data, []};
 
 disconnected(Type, Msg, _Data) ->
-  error_logger:error_msg("Clae fcm worker received unmanaged message in state disconnected :~p ~p",[Type, Msg]),
+  error_logger:error_msg("Clae fcm worker received unmanaged message  in state disconnected :~p ~p",[Type, Msg]),
   {keep_state_and_data, []}.
 
 retrying(cast, connect, Data) ->
