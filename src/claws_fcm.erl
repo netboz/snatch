@@ -196,7 +196,7 @@ handle_call({send, Data, AppId}, _From, State) ->
           {reply, ok, State}
     catch
         M:E ->
-          error_logger:info_msg("Error when fetching connection for appid :~p",[{M,E}]),
+          error_logger:info_msg("Error when fetching connection for appid ~p :~p",[AppId, {M,E}]),
           {reply, ok, State}
   end;
 
